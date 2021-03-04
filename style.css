@@ -1,0 +1,39 @@
+* {
+  outline: 0;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  /* 항상 CSS에서 body의 크기를 브라우저의 100%로 정의해줘야 body.clientWidth, body.clientHeight의 값을 가져올 수 있다. */
+  width: 100%;
+  height: 100%;
+
+  /* typo4에서는 검은색 배경으로 할거임 */
+  background-color: #000000; 
+
+  /* 
+  touch-action 프로퍼티는 모바일 터치 이벤트를 제한해 줌. 
+  none으로 하면 모든 터치이벤트가 비활성화 됨.
+  zooming이랑 pointermove를 헷갈리게 인식해서 오작동하는 걸 방지하려고 한 듯..
+  */
+  touch-action: none;
+}
+
+/* 
+2d canvas에 text particle들을 렌더해야 하는 경우 
+CSS style sheet에서 캔버스의 CSS 크기도 따로 지정해줘야 함.
+PIXI.Renderer로 생성한 WebGL view 에서는 autoDensity라는 
+option값으로 canvas의 resolution이 1보다 커질 때 CSS pixel도 그에 맞춰서 재조정하지만,
+일반 2d 캔버스에서는 canvas resolution이 늘어나면 
+CSS 크기를 브라우저의 100%로 따로 맞추어줘야 함.
+*/
+canvas {
+  width: 100%;
+  height: 100%;
+}
